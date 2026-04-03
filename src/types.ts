@@ -11,7 +11,7 @@ export interface Partner {
   name: string;
   description: { en: string; ar: string };
   url: string;
-  category: 'rides' | 'shopping' | 'food' | 'cinemas' | 'hotels' | 'flights';
+  category: 'rides' | 'shopping' | 'food' | 'cinemas' | 'hotels' | 'flights' | 'transport' | 'attractions';
 }
 
 export interface VIPPlan {

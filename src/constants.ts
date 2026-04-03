@@ -230,6 +230,69 @@ export const PARTNERS: Partner[] = [
     description: { en: 'Search and compare flights and hotels.', ar: 'ابحث وقارن بين الرحلات الجوية والفنادق.' },
     url: 'https://www.wego.ae',
     category: 'flights'
+  },
+  {
+    id: 'nol-recharge',
+    name: 'Nol Card Recharge',
+    description: { en: 'Top up your Dubai Nol card instantly.', ar: 'اشحن بطاقة نول دبي الخاصة بك على الفور.' },
+    url: 'https://www.rta.ae/wps/portal/rta/ae/public-transport/nol/topup',
+    category: 'transport'
+  },
+  {
+    id: 'hafilat-recharge',
+    name: 'Hafilat Card Recharge',
+    description: { en: 'Recharge your Abu Dhabi Hafilat card.', ar: 'اشحن بطاقة حافلات أبوظبي الخاصة بك.' },
+    url: 'https://hafilat.darbi.ae/',
+    category: 'transport'
+  },
+  {
+    id: 'burj-khalifa',
+    name: 'Burj Khalifa',
+    description: { en: 'Visit the world\'s tallest building.', ar: 'قم بزيارة أطول مبنى في العالم.' },
+    url: 'https://www.burjkhalifa.ae',
+    category: 'attractions'
+  },
+  {
+    id: 'museum-of-future',
+    name: 'Museum of the Future',
+    description: { en: 'Explore the future of humanity.', ar: 'استكشف مستقبل البشرية.' },
+    url: 'https://museumofthefuture.ae',
+    category: 'attractions'
+  },
+  {
+    id: 'ferrari-world',
+    name: 'Ferrari World',
+    description: { en: 'World\'s first Ferrari-branded theme park.', ar: 'أول مدينة ترفيهية تحمل علامة فيراري في العالم.' },
+    url: 'https://www.ferrariworldabudhabi.com',
+    category: 'attractions'
+  },
+  {
+    id: 'louvre-abudhabi',
+    name: 'Louvre Abu Dhabi',
+    description: { en: 'A universal museum in the Arab world.', ar: 'متحف عالمي في العالم العربي.' },
+    url: 'https://www.louvreabudhabi.ae',
+    category: 'attractions'
+  },
+  {
+    id: 'warner-bros',
+    name: 'Warner Bros. World',
+    description: { en: 'Immersive indoor theme park.', ar: 'مدينة ترفيهية داخلية غامرة.' },
+    url: 'https://www.wbworldabudhabi.com',
+    category: 'attractions'
+  },
+  {
+    id: 'global-village',
+    name: 'Global Village',
+    description: { en: 'Multi-cultural festival park.', ar: 'منتزه المهرجانات متعدد الثقافات.' },
+    url: 'https://www.globalvillage.ae',
+    category: 'attractions'
+  },
+  {
+    id: 'miracle-garden',
+    name: 'Dubai Miracle Garden',
+    description: { en: 'The world\'s largest natural flower garden.', ar: 'أكبر حديقة زهور طبيعية في العالم.' },
+    url: 'https://www.dubaimiraclegarden.com',
+    category: 'attractions'
   }
 ];
 
@@ -304,6 +367,8 @@ export const TRANSLATIONS = {
     cinemas: 'Cinemas',
     hotels: 'Hotels',
     flights: 'Flights',
+    transport: 'Transport',
+    attractions: 'Attractions',
     benefits: 'Benefits',
     total: 'Total'
   },
@@ -344,6 +409,8 @@ export const TRANSLATIONS = {
     cinemas: 'السينما',
     hotels: 'الفنادق',
     flights: 'الرحلات الجوية',
+    transport: 'المواصلات العامة',
+    attractions: 'المعالم السياحية',
     benefits: 'المميزات',
     total: 'الإجمالي'
   }

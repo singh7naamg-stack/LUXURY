@@ -23,7 +23,9 @@ import {
   Plus,
   Film,
   Hotel,
-  Plane
+  Plane,
+  Ticket,
+  Bus
 } from 'lucide-react';
 import { 
   collection, 
@@ -232,7 +234,7 @@ export default function App() {
                   </div>
 
                   {/* Quick Actions */}
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-4">
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-9 gap-4">
                     {[
                       { icon: Briefcase, label: t.bookService, tab: 'services' },
                       { icon: Utensils, label: t.orderFood, tab: 'lifestyle' },
@@ -240,7 +242,9 @@ export default function App() {
                       { icon: ShoppingBag, label: t.shop, tab: 'lifestyle' },
                       { icon: Film, label: t.cinemas, tab: 'lifestyle' },
                       { icon: Hotel, label: t.hotels, tab: 'lifestyle' },
-                      { icon: Plane, label: t.flights, tab: 'lifestyle' }
+                      { icon: Plane, label: t.flights, tab: 'lifestyle' },
+                      { icon: Ticket, label: t.attractions, tab: 'lifestyle' },
+                      { icon: Bus, label: t.transport, tab: 'lifestyle' }
                     ].map((action, i) => (
                       <button 
                         key={i}
@@ -320,6 +324,43 @@ export default function App() {
                       </div>
                     </div>
                   </div>
+
+                  {/* Attractions Section */}
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center">
+                      <h2 className="text-xl font-bold">{isRTL ? 'استكشف المعالم' : 'Explore Attractions'}</h2>
+                      <button 
+                        onClick={() => setActiveTab('lifestyle')}
+                        className="text-gold text-xs font-bold uppercase tracking-widest hover:underline"
+                      >
+                        {isRTL ? 'عرض الكل' : 'View All'}
+                      </button>
+                    </div>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      {[
+                        { name: isRTL ? 'برج خليفة' : 'Burj Khalifa', img: 'https://images.unsplash.com/photo-1526495124232-a02e18494d17?auto=format&fit=crop&q=80&w=400' },
+                        { name: isRTL ? 'متحف المستقبل' : 'Museum of Future', img: 'https://images.unsplash.com/photo-1649154435163-441f7e3666f7?auto=format&fit=crop&q=80&w=400' },
+                        { name: isRTL ? 'متحف اللوفر' : 'Louvre Abu Dhabi', img: 'https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&q=80&w=400' },
+                        { name: isRTL ? 'عالم فيراري' : 'Ferrari World', img: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=400' }
+                      ].map((attr, i) => (
+                        <div 
+                          key={i}
+                          onClick={() => setActiveTab('lifestyle')}
+                          className="relative h-32 rounded-2xl overflow-hidden group cursor-pointer"
+                        >
+                          <img 
+                            src={attr.img} 
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                            referrerPolicy="no-referrer"
+                          />
+                          <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
+                          <div className="absolute inset-0 flex items-center justify-center p-2">
+                            <h3 className="text-xs font-bold text-center">{attr.name}</h3>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               )}
 
@@ -361,7 +402,9 @@ export default function App() {
                     { title: t.food, icon: Utensils, category: 'food' },
                     { title: t.cinemas, icon: Film, category: 'cinemas' },
                     { title: t.hotels, icon: Hotel, category: 'hotels' },
-                    { title: t.flights, icon: Plane, category: 'flights' }
+                    { title: t.flights, icon: Plane, category: 'flights' },
+                    { title: t.attractions, icon: Ticket, category: 'attractions' },
+                    { title: t.transport, icon: Bus, category: 'transport' }
                   ].map((section) => (
                     <div key={section.category} className="space-y-4">
                       <div className="flex items-center gap-3 border-b border-white/5 pb-2">
