@@ -1,0 +1,28 @@
+{
+  "entities": {
+    "booking": {
+      "title": "Booking",
+      "description": "A luxury service booking request.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Customer's full name" },
+        "phone": { "type": "string", "description": "Customer's WhatsApp number" },
+        "address": { "type": "string", "description": "Service location address" },
+        "serviceId": { "type": "string", "description": "ID of the booked service" },
+        "serviceName": { "type": "string", "description": "Name of the booked service" },
+        "date": { "type": "string", "description": "Preferred service date" },
+        "time": { "type": "string", "description": "Preferred service time" },
+        "totalPrice": { "type": "number", "description": "Total price in AED" },
+        "status": { "type": "string", "enum": ["pending", "confirmed", "completed", "cancelled"], "description": "Booking status" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the booking was created" }
+      },
+      "required": ["name", "phone", "address", "serviceId", "serviceName", "date", "time", "totalPrice", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/bookings/{bookingId}": {
+      "schema": "booking",
+      "description": "Collection of all service bookings."
+    }
+  }
+}

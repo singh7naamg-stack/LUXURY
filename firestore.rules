@@ -1,0 +1,73 @@
+// ===============================================================
+// Assumed Data Model
+// ===============================================================
+//
+// Collection: bookings
+// Document ID: auto-generated
+// Fields:
+//   - name: string (required) - Customer's full name
+//   - phone: string (required) - Customer's WhatsApp number
+//   - address: string (required) - Service location address
+//   - serviceId: string (required) - ID of the booked service
+//   - serviceName: string (required) - Name of the booked service
+//   - date: string (required) - Preferred service date
+//   - time: string (required) - Preferred service time
+//   - totalPrice: number (required) - Total price in AED
+//   - status: string (required) - Booking status (pending, confirmed, completed, cancelled)
+//   - createdAt: timestamp (required) - When the booking was created
+//
+// ===============================================================
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && 
+        (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+         (request.auth.token.email == "singh7naamg@gmail.com" && request.auth.token.email_verified == true));
+    }
+
+    function isValidBooking(data) {
+      return data.keys().hasAll(['name', 'phone', 'address', 'serviceId', 'serviceName', 'date', 'time', 'totalPrice', 'status', 'createdAt']) &&
+             data.name is string && data.name.size() > 0 && data.name.size() < 100 &&
+             data.phone is string && data.phone.size() > 5 && data.phone.size() < 20 &&
+             data.address is string && data.address.size() > 0 && data.address.size() < 500 &&
+             data.serviceId is string &&
+             data.serviceName is string &&
+             data.date is string &&
+             data.time is string &&
+             data.totalPrice is number && data.totalPrice >= 0 &&
+             data.status in ['pending', 'confirmed', 'completed', 'cancelled'] &&
+             data.createdAt is timestamp;
+    }
+
+    // ===============================================================
+    // Rules
+    // ===============================================================
+
+    match /bookings/{bookingId} {
+      // Customers can create bookings without being logged in (per user request)
+      // But we restrict it to valid booking data
+      allow create: if isValidBooking(request.resource.data);
+      
+      // Only admins can read all bookings
+      allow read: if isAdmin();
+      
+      // Only admins can update or delete bookings
+      allow update, delete: if isAdmin();
+    }
+
+    match /users/{userId} {
+      allow read: if isAuthenticated() && request.auth.uid == userId;
+      allow write: if isAdmin();
+    }
+  }
+}

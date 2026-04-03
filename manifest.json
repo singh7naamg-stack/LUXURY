@@ -1,0 +1,21 @@
+{
+  "name": "LUXURY ON DEMAND HOME SERVICES",
+  "short_name": "LUX",
+  "description": "Premium luxury on-demand services app for the UAE.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#C9A84C",
+  "icons": [
+    {
+      "src": "https://placehold.jp/C9A84C/ffffff/192x192.png?text=LUX",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://placehold.jp/C9A84C/ffffff/512x512.png?text=LUXURY",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
