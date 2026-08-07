@@ -2,84 +2,64 @@ import { Service, Partner, VIPPlan } from './types';
 
 export const SERVICES: Service[] = [
   {
-    id: 'villa-deep-clean',
-    name: { en: 'Villa Deep Clean', ar: 'تنظيف عميق للفيلا' },
-    description: { 
-      en: 'Professional deep cleaning for luxury villas by expert staff.', 
-      ar: 'تنظيف عميق احترافي للفلل الفاخرة من قبل طاقم خبير.' 
-    },
-    price: 350,
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800'
-  },
-  {
-    id: 'car-detailing',
-    name: { en: 'Car Detailing', ar: 'تلميع السيارات' },
-    description: { 
-      en: 'Premium interior and exterior detailing at your doorstep.', 
-      ar: 'تلميع داخلي وخارجي متميز عند باب منزلك.' 
-    },
-    price: 180,
-    image: 'https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&q=80&w=800'
-  },
-  {
     id: 'personal-chef',
-    name: { en: 'Personal Chef (Dinner)', ar: 'شيف شخصي (عشاء)' },
-    description: { 
-      en: 'Gourmet dining experience prepared in your own kitchen.', 
-      ar: 'تجربة طعام فاخرة يتم تحضيرها في مطبخك الخاص.' 
+    name: { en: 'Private Chef (Dinner)', ar: 'شيف خاص (عشاء)' },
+    description: {
+      en: 'A gourmet fine-dining experience prepared in your own kitchen.',
+      ar: 'تجربة طعام فاخرة يتم تحضيرها في مطبخك الخاص.'
     },
     price: 750,
     image: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=800'
   },
   {
-    id: 'pets-grooming',
-    name: { en: 'Pets Grooming', ar: 'تجميل الحيوانات الأليفة' },
-    description: { 
-      en: 'Professional grooming for your pets at home.', 
-      ar: 'تجميل احترافي لحيواناتك الأليفة في المنزل.' 
-    },
-    price: 250,
-    image: 'https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=800'
-  },
-  {
-    id: 'nurse-on-call',
-    name: { en: 'Nurse on Call', ar: 'ممرضة عند الطلب' },
-    description: { 
-      en: 'Qualified nursing care in the comfort of your home.', 
-      ar: 'رعاية تمريضية مؤهلة في راحة منزلك.' 
-    },
-    price: 500,
-    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800'
-  },
-  {
     id: 'doctor-on-call',
     name: { en: 'Doctor on Call', ar: 'طبيب عند الطلب' },
-    description: { 
-      en: 'Expert medical consultation at your doorstep.', 
-      ar: 'استشارة طبية خبيرة عند باب منزلك.' 
+    description: {
+      en: 'Discreet, expert medical consultation at your residence.',
+      ar: 'استشارة طبية خبيرة عند باب منزلك.'
     },
     price: 800,
     image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=800'
   },
   {
-    id: 'nanny-services',
-    name: { en: 'Nanny Services', ar: 'خدمات مربية' },
-    description: { 
-      en: 'Professional and caring childcare for your little ones.', 
-      ar: 'رعاية أطفال احترافية وحنونة لصغارك.' 
+    id: 'nurse-on-call',
+    name: { en: 'Nurse on Call', ar: 'ممرضة عند الطلب' },
+    description: {
+      en: 'Qualified private nursing care in the comfort of your home.',
+      ar: 'رعاية تمريضية مؤهلة في راحة منزلك.'
     },
-    price: 400,
-    image: 'https://images.unsplash.com/photo-1581579186913-45ac3e6efe93?auto=format&fit=crop&q=80&w=800'
+    price: 500,
+    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800'
   },
   {
     id: 'salon-services',
-    name: { en: 'Salon Services', ar: 'خدمات الصالون' },
-    description: { 
-      en: 'Premium hair, nails, and beauty treatments at home.', 
-      ar: 'علاجات الشعر والأظافر والتجميل المتميزة في المنزل.' 
+    name: { en: 'At-Home Salon & Spa', ar: 'صالون وسبا في المنزل' },
+    description: {
+      en: 'Premium hair, nails and beauty treatments by top artists at home.',
+      ar: 'علاجات الشعر والأظافر والتجميل المتميزة في المنزل.'
     },
-    price: 300,
+    price: 350,
     image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=800'
+  },
+  {
+    id: 'car-detailing',
+    name: { en: 'Luxury Car Detailing', ar: 'تلميع السيارات الفاخرة' },
+    description: {
+      en: 'Premium interior and exterior detailing at your doorstep.',
+      ar: 'تلميع داخلي وخارجي متميز عند باب منزلك.'
+    },
+    price: 180,
+    image: 'https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&q=80&w=800'
+  },
+  {
+    id: 'villa-deep-clean',
+    name: { en: 'Villa Deep Clean', ar: 'تنظيف عميق للفيلا' },
+    description: {
+      en: 'White-glove deep cleaning for luxury villas by an expert team.',
+      ar: 'تنظيف عميق احترافي للفلل الفاخرة من قبل طاقم خبير.'
+    },
+    price: 400,
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800'
   }
 ];
 
