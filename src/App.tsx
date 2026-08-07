@@ -49,6 +49,7 @@ import { db, auth } from './firebase';
 import { SERVICES, TRANSLATIONS, VIP_PLANS } from './constants';
 import { Service, Booking, Language, Tab, Partner, VIPPlan } from './types';
 import { cn } from './lib/utils';
+import { ConciergeChat } from './components/ConciergeChat';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('en');
@@ -623,6 +624,9 @@ export default function App() {
           </div>
         </nav>
       )}
+
+      {/* AI concierge — Aria */}
+      <ConciergeChat />
     </div>
   );
 }
