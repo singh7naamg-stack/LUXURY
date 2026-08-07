@@ -46,7 +46,7 @@ import {
   User
 } from 'firebase/auth';
 import { db, auth } from './firebase';
-import { SERVICES, TRANSLATIONS, PARTNERS, VIP_PLANS } from './constants';
+import { SERVICES, TRANSLATIONS, VIP_PLANS } from './constants';
 import { Service, Booking, Language, Tab, Partner, VIPPlan } from './types';
 import { cn } from './lib/utils';
 
@@ -234,17 +234,11 @@ export default function App() {
                   </div>
 
                   {/* Quick Actions */}
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-9 gap-4">
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                     {[
                       { icon: Briefcase, label: t.bookService, tab: 'services' },
-                      { icon: Utensils, label: t.orderFood, tab: 'lifestyle' },
-                      { icon: Car, label: t.getRide, tab: 'lifestyle' },
-                      { icon: ShoppingBag, label: t.shop, tab: 'lifestyle' },
-                      { icon: Film, label: t.cinemas, tab: 'lifestyle' },
-                      { icon: Hotel, label: t.hotels, tab: 'lifestyle' },
-                      { icon: Plane, label: t.flights, tab: 'lifestyle' },
-                      { icon: Ticket, label: t.attractions, tab: 'lifestyle' },
-                      { icon: Bus, label: t.transport, tab: 'lifestyle' }
+                      { icon: Utensils, label: isRTL ? 'شيف خاص' : 'Private Chef', tab: 'services' },
+                      { icon: Car, label: isRTL ? 'سائق خاص' : 'Chauffeur', tab: 'services' }
                     ].map((action, i) => (
                       <button 
                         key={i}
@@ -276,86 +270,33 @@ export default function App() {
                     </div>
                   </div>
 
-                  {/* Travel Section */}
+                  {/* Signature services preview */}
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
-                      <h2 className="text-xl font-bold">{isRTL ? 'خطط لرحلتك' : 'Plan Your Journey'}</h2>
-                      <button 
-                        onClick={() => setActiveTab('lifestyle')}
-                        className="text-gold text-xs font-bold uppercase tracking-widest hover:underline"
-                      >
-                        {isRTL ? 'عرض الكل' : 'View All'}
-                      </button>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div 
-                        onClick={() => setActiveTab('lifestyle')}
-                        className="relative h-40 rounded-2xl overflow-hidden group cursor-pointer"
-                      >
-                        <img 
-                          src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=800" 
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-                          referrerPolicy="no-referrer"
-                        />
-                        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="text-center">
-                            <Hotel className="text-gold mx-auto mb-2" size={32} />
-                            <h3 className="text-xl font-bold">{t.hotels}</h3>
-                          </div>
-                        </div>
-                      </div>
-                      <div 
-                        onClick={() => setActiveTab('lifestyle')}
-                        className="relative h-40 rounded-2xl overflow-hidden group cursor-pointer"
-                      >
-                        <img 
-                          src="https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?auto=format&fit=crop&q=80&w=800" 
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-                          referrerPolicy="no-referrer"
-                        />
-                        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="text-center">
-                            <Plane className="text-gold mx-auto mb-2" size={32} />
-                            <h3 className="text-xl font-bold">{t.flights}</h3>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Attractions Section */}
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-center">
-                      <h2 className="text-xl font-bold">{isRTL ? 'استكشف المعالم' : 'Explore Attractions'}</h2>
-                      <button 
-                        onClick={() => setActiveTab('lifestyle')}
+                      <h2 className="text-xl font-bold">{isRTL ? 'خدمات موقّعة' : 'Signature Services'}</h2>
+                      <button
+                        onClick={() => setActiveTab('services')}
                         className="text-gold text-xs font-bold uppercase tracking-widest hover:underline"
                       >
                         {isRTL ? 'عرض الكل' : 'View All'}
                       </button>
                     </div>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                      {[
-                        { name: isRTL ? 'برج خليفة' : 'Burj Khalifa', img: 'https://images.unsplash.com/photo-1526495124232-a02e18494d17?auto=format&fit=crop&q=80&w=400' },
-                        { name: isRTL ? 'متحف المستقبل' : 'Museum of Future', img: 'https://images.unsplash.com/photo-1649154435163-441f7e3666f7?auto=format&fit=crop&q=80&w=400' },
-                        { name: isRTL ? 'متحف اللوفر' : 'Louvre Abu Dhabi', img: 'https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&q=80&w=400' },
-                        { name: isRTL ? 'عالم فيراري' : 'Ferrari World', img: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=400' }
-                      ].map((attr, i) => (
-                        <div 
-                          key={i}
-                          onClick={() => setActiveTab('lifestyle')}
-                          className="relative h-32 rounded-2xl overflow-hidden group cursor-pointer"
+                      {SERVICES.slice(1, 5).map((service) => (
+                        <div
+                          key={service.id}
+                          onClick={() => handleBookNow(service)}
+                          className="relative h-40 rounded-2xl overflow-hidden group cursor-pointer"
                         >
-                          <img 
-                            src={attr.img} 
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                          <img
+                            src={service.image}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             referrerPolicy="no-referrer"
                           />
-                          <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
-                          <div className="absolute inset-0 flex items-center justify-center p-2">
-                            <h3 className="text-xs font-bold text-center">{attr.name}</h3>
+                          <div className="absolute inset-0 bg-gradient-to-t from-luxury-black via-black/20 to-transparent" />
+                          <div className="absolute bottom-3 left-3 right-3">
+                            <h3 className="text-sm font-bold">{service.name[lang]}</h3>
+                            <p className="text-gold text-xs font-bold mt-1">{service.price} {t.aed}</p>
                           </div>
                         </div>
                       ))}
@@ -389,47 +330,6 @@ export default function App() {
                       </div>
                     ))}
                   </div>
-                </div>
-              )}
-
-              {activeTab === 'lifestyle' && (
-                <div className="space-y-12">
-                  <h1 className="text-3xl font-bold">{t.getAnything}</h1>
-                  
-                  {[
-                    { title: t.rides, icon: Car, category: 'rides' },
-                    { title: t.shopping, icon: ShoppingBag, category: 'shopping' },
-                    { title: t.food, icon: Utensils, category: 'food' },
-                    { title: t.cinemas, icon: Film, category: 'cinemas' },
-                    { title: t.hotels, icon: Hotel, category: 'hotels' },
-                    { title: t.flights, icon: Plane, category: 'flights' },
-                    { title: t.attractions, icon: Ticket, category: 'attractions' },
-                    { title: t.transport, icon: Bus, category: 'transport' }
-                  ].map((section) => (
-                    <div key={section.category} className="space-y-4">
-                      <div className="flex items-center gap-3 border-b border-white/5 pb-2">
-                        <section.icon size={18} className="text-gold" />
-                        <h2 className="text-lg font-bold uppercase tracking-widest">{section.title}</h2>
-                      </div>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {PARTNERS.filter(p => p.category === section.category).map(partner => (
-                          <a 
-                            key={partner.id}
-                            href={partner.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-luxury-gray p-6 rounded-2xl border border-white/5 flex justify-between items-center hover:border-gold/30 transition-all group"
-                          >
-                            <div>
-                              <h3 className="font-bold mb-1">{partner.name}</h3>
-                              <p className="text-xs text-gray-500">{partner.description[lang]}</p>
-                            </div>
-                            <ExternalLink size={16} className="text-gray-600 group-hover:text-gold transition-colors" />
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
                 </div>
               )}
 
@@ -719,7 +619,6 @@ export default function App() {
           <div className="max-w-xl mx-auto flex justify-between items-center">
             <TabButton tab="home" icon={Home} label={t.home} />
             <TabButton tab="services" icon={Briefcase} label={t.services} />
-            <TabButton tab="lifestyle" icon={Globe} label={t.lifestyle} />
             <TabButton tab="vip" icon={Crown} label={t.vip} />
           </div>
         </nav>
